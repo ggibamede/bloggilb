@@ -2,7 +2,7 @@
     const express = require('express');
     const handlebars = require('express-handlebars');
     const bodyParser = require('body-parser');
-    //const mongosse = require('mongoose');
+    const mongose = require('mongoose');
     const app = express();
     const admin = require('./routes/admin');
     const path = require('path');
@@ -14,7 +14,13 @@
         app.engine('handlebars', handlebars({defaultLayout: 'main'}))
         app.set('view engine','handlebars')
     
-    
+    //Mongoose
+    mongose.Promise = global.Promise;
+    mongose.connect('mongodb://localhost/blogapp').then(()=>{
+        console.log('Conexão realizada')
+    }).catch((erro)=>{
+        console.log('Ocorreu um erro')
+    })
     
 
     //Public
