@@ -43,10 +43,7 @@
     //Public
         app.use(express.static(path.join(__dirname,"public")))
         
-        app.use((req , res , next)=>{
-            console.log('Ola ;midleware teste;')
-            next();
-        })
+        
 //Rotas 
 
     app.use('/admin', admin)
