@@ -69,7 +69,7 @@ router.get('/categorias/edit/:id',(req, res)=>{
 
 router.post('/categorias/edit',(req, res)=>{
     Categoria.findOne({_id: req.body.id}).lean().then((categoria)=>{
-
+        //OBS : Realizar validação de edição
         categoria.nome = req.body.nome;
         categoria.slug = req.body.slug;
 
@@ -84,6 +84,17 @@ router.post('/categorias/edit',(req, res)=>{
         req.flash("error_msg", "Houve um erro ao digitar a categoria")
         res.redirect("/admin/categorias")
     })
+})
+
+router.post('/categorias/deletar',(req, res)=>{
+    Categoria.remove({_id: req.body.id}).then(()=>{
+        req.flash("success_msg","Categoria deletada com sucesso")
+        res.redirect("/admin/categorias")
+    }).catch((erro)=>{
+        req.flash("error_msg","A categoria não foi deletada")
+        res.redirect("/admin/categorias")
+    })
+
 })
 
 module.exports = router
