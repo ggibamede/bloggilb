@@ -20,6 +20,14 @@ const Postagem = new Schema({
     },
     categoria:{
         type: Schema.Types.ObjectId,
-        ref: "categorias"
-    }
+        ref: 'categorias',
+        required: true
+    },
+    data:{
+        type: Date,
+        default: Date.now
+    },
+
 })
+
+mongoose.model("postagens", Postagem);
