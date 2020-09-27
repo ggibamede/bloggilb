@@ -201,4 +201,5 @@ router.get('/postagens/deletar/:id', (req, res)=>{
         res.redirect('/admin/postagens')
     })
 })
+
 module.exports = router

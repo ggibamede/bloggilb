@@ -12,9 +12,8 @@ const { Console } = require('console');
     require('./models/Postagem');
     const Postagem = mongose.model('postagens')
     require('./models/Categoria');
-    const Categoria = mongose.model('categorias')
-    const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
-
+    const Categoria = mongose.model('categorias');
+    const usuarios = require('./routes/usuario');
 
 //Configurações 
     //Sessão
@@ -118,6 +117,7 @@ const { Console } = require('console');
     })
 
     app.use('/admin', admin)
+    app.use('/usuarios', usuarios)
 
 //Notas
 
