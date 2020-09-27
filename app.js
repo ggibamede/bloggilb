@@ -15,6 +15,9 @@ const { Console } = require('console');
     const Categoria = mongose.model('categorias');
     const usuarios = require('./routes/usuario');
 
+//Autenticação
+    const passport = require('passport')
+    require('./config/auth')(passport)
 //Configurações 
     //Sessão
         app.use(session({
@@ -22,12 +25,15 @@ const { Console } = require('console');
             resave: true,
             saveUninitialized: true
         }))
+        app.use(passport.initialize())
+        app.use(passport.session())
         app.use(flash())
     
-    //MidleWare
+    //MidleWares
         app.use((req , res , next)=>{
             res.locals.success_msg = req.flash("success_msg")
             res.locals.error_msg = req.flash("error_msg")
+            res.locals.error = req.flash("error")
             next()
         })
 
