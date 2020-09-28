@@ -14,7 +14,7 @@ const { Console } = require('console');
     require('./models/Categoria');
     const Categoria = mongose.model('categorias');
     const usuarios = require('./routes/usuario');
-
+    const db = require('./config/db')
 //Autenticação
     const passport = require('passport')
     require('./config/auth')(passport)
@@ -50,7 +50,7 @@ const { Console } = require('console');
     
     //Mongoose
     mongose.Promise = global.Promise;
-    mongose.connect('mongodb://localhost/blogapp').then(()=>{
+    mongose.connect(db.mongoURI).then(()=>{
         console.log('Conexão realizada')
     }).catch((erro)=>{
         console.log('Ocorreu um erro')
@@ -133,7 +133,7 @@ const { Console } = require('console');
 
 
 //Outros
-const PORT = 8081
+const PORT = process.env.PORT || 8081
 app.listen(PORT,()=>{
     console.log('Servidor rodando na porta '+PORT);
 })
