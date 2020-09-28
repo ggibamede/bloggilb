@@ -49,6 +49,7 @@ const { Console } = require('console');
         app.set('view engine','handlebars')
     
     //Mongoose
+    console.log('link de conexão: ' + db.mongoURI)
     mongose.Promise = global.Promise;
     mongose.connect(db.mongoURI).then(()=>{
         console.log('Conexão realizada')
