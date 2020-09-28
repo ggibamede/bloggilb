@@ -1,4 +1,9 @@
-<div class="jumbotron">
+
+{{#if user}}
+        
+        
+{{else}}
+  <div class="jumbotron">
   <h1 class="display-4">Bem vindo ao blog</h1>
   <p class="lead">Blog criado com Node.js , Express e MongoDB.</p>
   <hr class="my-4">
@@ -8,7 +13,10 @@
   </p>
 </div>
 
-<hr>
+<hr>    
+        
+{{/if}}
+
 
 <h2>Postagens recentes </h2>
 
