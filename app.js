@@ -51,7 +51,7 @@ const { Console } = require('console');
     //Mongoose
     console.log('link de conexão: ' + db.mongoURI)
     mongose.Promise = global.Promise;
-    mongose.connect(db.mongoURI).then(()=>{
+    mongose.connect(process.env.MONGODB_URL).then(()=>{
         console.log('Conexão realizada')
     }).catch((erro)=>{
         console.log('Ocorreu um erro')
